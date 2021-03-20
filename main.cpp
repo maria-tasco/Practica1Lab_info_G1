@@ -4,21 +4,25 @@ using namespace std;
 
 int main()
 {
-    int numprob=0, op=0; // (numprob) guardará el numero del ejercicio o problema. Y (op) nos servirá para elegir entre ver los ejercicios ó problemas.
-    cout<<"Ingrese 1 para ver los ejercicios o 0 (cero) para ver los problemas"<<endl; cin>>op; //aquí restringimos los valores de op al usuario, dandole así dos opciones.
-    if (op==1){ //después de tomar el dato, se genera un condicional para que dependiendo del dato ingresado se proceda el bloque de los ejercicios o el de los problemas.
-        cout<<"ingrese una opcion desde 1 a 30 o 0 (cero) para salir "<<endl; cin>>numprob; //ya habiendo elejido la opcion d elos ejercicios ahora si nos interesa saber que numero de ejercicio queremos ver.
-        while(numprob!=0) //usamos este bucle while para que mientras que el dato sea dif de 0 se repita la opción de mirar los ejercicios y no tener que salir y volver a ejecutar.
+    int a=0,b=0,n=0;
+    unsigned short numprob=0, op=0;         // (numprob) guardará el numero del ejercicio o problema. Y (op) nos servirá para elegir entre ver los ejercicios ó problemas.
+    cout<<"Ingrese 1 para ver los ejercicios o 0 (cero) para ver los problemas"<<endl;
+    cin>>op;
+    if (op==1){                             //después de tomar el dato, se genera un condicional para que dependiendo del dato ingresado se proceda el bloque de los ejercicios o el de los problemas.
+        cout<<"ingrese una opcion desde 1 a 30 para ver los ejercicios o 0 (cero) para salir "<<endl;
+        cin>>numprob;                       //ya habiendo elejido la opcion d elos ejercicios ahora si nos interesa saber que numero de ejercicio queremos ver.
+        while(numprob!=0)                   //usamos este bucle while para que mientras que el dato sea dif de 0 se repita la opción de mirar los ejercicios y no tener que salir y volver a ejecutar.
         {
-            switch (numprob) //evaluamos el numero de problema para ver el caso.
+            switch (numprob)
             {
                 case 1:
                 {
                      cout<<"Escriba un programa que pida dos números A y B e imprima en pantalla el residuo de la division A/B"<<endl;
-                     int a=0,b=0, div=0;
+                     int /*a=0,b=0,*/ div=0;
                      cout<<"Ingrese el primer numero"<<endl; cin>>a;
                      cout<<"Ingrese el segundo numero"<<endl; cin>>b;
-                     div=a/b;
+                     if(b==0) cout<<"divison entre 0 no esta definida"<<endl;
+                     else div=a/b;
                      cout<<"El residuo de la division "<<a<<"/"<<b<<" es: "<<div<<endl;
 
                 }
@@ -26,7 +30,7 @@ int main()
                 case 2:
                 {
                     cout<<"Escriba un programa que pida un numero N e imprima en pantalla si es par o impar."<<endl;
-                    int n=0;
+                    //int n=0;
                     cout<<"Ingrese un numero: "<<endl; cin>>n;
                     if(n%2==0)
                         cout<<n<<" es par"<<endl;
@@ -38,7 +42,7 @@ int main()
                 case 3:
                 {
                     cout<<"Escriba un programa que pida dos números A y B e imprima en pantalla el mayor."<<endl;
-                    int a=0,b=0;
+                    //int a=0,b=0;
                     cout<<"ingrese 2 numeros: "<<endl; cin>>a>>b;
                     if(a>b)
                         cout<<"El mayor es "<<a<<endl;
@@ -52,7 +56,7 @@ int main()
                 case 4:
                 {
                     cout<<"Escriba un programa que pida dos numeros A y B e imprima en pantalla el menor."<<endl;
-                    int a=0,b=0;
+                    //int a=0,b=0;
                     cout<<"ingrese 2 numeros: "<<endl; cin>>a>>b;
                     if(a<b)
                         cout<<"El menor es "<<a<<endl;
@@ -66,33 +70,48 @@ int main()
                 case 5:
                 {
                     cout<<"Escriba un programa que pida dos números A y B e imprima en pantalla la división A/B con redondeo."<<endl;
-                    int a=0, b=0, div=0;
+                    int /*a=0, b=0,*/ ent=0;
+                    float div=0;
                     cout<<"ingrese dos numeros"<<endl; cin>>a>>b;
-                    div=round(a/b);
-                    cout<<div<<endl;
-
+                    div=float(a)/b; //div ordinaria
+                    ent=a/b; //div entera
+                    if(div-ent>= 0.5 && div>0) ent ++;
+                    else if (div-ent<=-0.5 && div<0) ent --;
+                    cout<<a<<"/"<<b<<"= "<<ent<<endl; //REVISAR
                 }
                 break;
                 case 6:
                 {
                     cout<<"Escriba un programa que pida dos números A y B e imprima en pantalla la potencia A^B"<<endl;
-                    int a=0, b=0;
+                    //int a=0, b=0;
+                    //float expn=0.0;
                     cout<<"Ingrese dos numeros "<<endl; cin>>a>>b;
                     int c=a;
                     if(b==0)
                         cout<<a<<"^"<<b<<"= 1"<<endl;
-                    for(int i=1;i<b;i++)
-                        a*=c;
-                    cout<<c<<"^"<<b<<"="<<a<<endl;
+                    else if (b>0)
+                    {
+                        for(int i=1;i<b;i++)
+                            a*=c;
+                        cout<<c<<"^"<<b<<"= "<<a<<endl;
+                    }
+                    else
+                    {
+                        for(int i=1;i<(-b);i++)
+                            a*=c;
+                        //expn=1/float(a);
+                        cout<<c<<"^"<<b<<"= "<<1/float(a)<<endl;
+                    }
 
                 }
                 break;
                 case 7:
                 {
                     cout<<"Escriba un programa que pida un número N e imprima en pantalla la suma de todos los números entre 0 y N (incluyéndose el mismo)"<<endl;
-                    int n=0, suma=0; //¿? Cómo hago con los números negativos, usando unsigned int no compila.
+                    int /*n=0,*/ suma=0;                         // NO SE SI ESTA BIEN. POR CUANTO RECIBE NUMEROS NEGATIVOS.
                     cout<<"ingrese un numero "<<endl; cin>>n;
-                    if (n%2 != 0)
+                    if (n<0) cout<<"numero no valido"<<endl;
+                    else if (n%2 != 0)
                         for(int i=0;i<=n;i++)
                             suma+=i;
                     else
@@ -106,20 +125,49 @@ int main()
                 case 8:
                 {
                     cout<<"Escriba un programa que pida un numero N e imprima en pantalla su factorial"<<endl;
-                    int n=0, factorial=1;
+                    int /*n=0,*/ factorial=1;
                     cout<<"ingrese un numero"<<endl; cin>>n;
-                    for(int i=1;i<=n;i++)
-                        factorial*=i;
-                    cout<<n<<"!="<<factorial<<endl;
+                    if(n>=0){
+                        for(int i=1;i<=n;i++)
+                            factorial*=i;
+                        cout<<n<<"!="<<factorial<<endl;
+                    }
+                    else
+                    {
+                        for(int i=1;i<=(-n);i++)
+                            factorial*=i;
+                        cout<<n<<"!="<<-factorial<<endl;
+                    }
 
                 }
                 break;
                 case 9:
                 {
                     cout<<"Escriba un programa que pida un número N e imprima el perímetro y área de uncírculo con radio N."<<endl;
-
+                    //unsigned int r=0;                       //REVISAR INGRESO DE NEGATIVOS
+                    float pi=3.1416;
+                    cout<<"ingrese un numero"<<endl; cin>>n;
+                    cout<<"Perimetro: "<<2*pi*n<<endl;
+                    cout<<"Area: "<<pi*(n*=n)<<endl;
 
                 }
+                break;
+                case 10:
+                {
+                    cout<<"Escriba un programa que pida un número N e imprima en pantalla todos los multiplos de dicho número entre 1 y 100"<<endl;
+                    cin>>n;
+                    int multiplos=0;
+                    a=1;
+                    while(multiplos<100)
+                    {
+
+                        multiplos=n*a;
+                        a++;
+                        cout<<multiplos<<endl;
+
+                    }
+                }
+                break;
             default: //se usa para que si el usuario ingresa un numero que no corresponde a ningún caso o es diferente de 0, le haga saber al usuario que es aopción no es valida.
             cout<<"opcion no valida."<<endl;
             break;
@@ -130,9 +178,9 @@ int main()
         }
 
     }
-    else //si la opción no es 1 se vendrá aquí y se ejecutará el bloque de los problemas. El cuál tendra la misma estructara que el bloque de los ejercicios.
+    else if (op==0) //si la opción no es 1 se vendrá aquí y se ejecutará el bloque de los problemas. El cuál tendra la misma estructara que el bloque de los ejercicios.
     {
-        cout<<"ingrese una opcion desde 1 a 17 o 0 (cero) para salir "<<endl; cin>>numprob;
+        cout<<"ingrese una opcion desde 1 a 17 para ver los problemas o 0 (cero) para salir "<<endl; cin>>numprob;
         while(numprob!=0)
         {
             switch (numprob)
@@ -142,5 +190,7 @@ int main()
             }
         }
     }
+    else
+       cout<<"opcion no valida."<<endl;
     return 0;
 }
