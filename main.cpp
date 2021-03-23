@@ -155,18 +155,36 @@ int main()
                 case 10:
                 {
                     cout<<"Escriba un programa que pida un número N e imprima en pantalla todos los multiplos de dicho número entre 1 y 100"<<endl;
-                    cin>>n;
+                    cout<<"ingrese un numero"<<endl; cin>>n;
                     int multiplos=0;
                     a=1;
                     while(multiplos<100)
                     {
-
+                        cout<<multiplos<<endl;
                         multiplos=n*a;
                         a++;
-                        cout<<multiplos<<endl;
-
                     }
                 }
+                break;
+                 case 11:
+                {
+                    cout<<"Escriba un programa que pida un número N e imprima en pantalla su tabla de multiplicar hasta 10xN"<<endl;
+                    cout<<"ingrese un numero"<<endl; cin>>n;
+                    for(int i=1;i<=10;i++)
+                            cout<<i<<"*"<<n<<"= "<<i*n<<endl;
+                }
+                break;
+            case 12:
+            {
+                cout<<"Escriba un programa que pida un número N e imprima todas las potencias desde N1 hasta N5"<<endl;
+                cout<<"ingrese un número: "<<endl; cin>>n;
+                a=n;
+                for(int i=1;i<=5;i++) //FALTA ARREGLARLO
+                {
+                    n*=a;
+                    cout<<a<<"^"<<i<<"= "<<n<<endl;
+                }
+            }
                 break;
             default: //se usa para que si el usuario ingresa un numero que no corresponde a ningún caso o es diferente de 0, le haga saber al usuario que es aopción no es valida.
             cout<<"opcion no valida."<<endl;
