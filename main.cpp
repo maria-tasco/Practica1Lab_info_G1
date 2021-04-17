@@ -83,14 +83,14 @@ int main()
                     cout<<"Ingrese dos numeros "<<endl; cin>>a>>b;
                     int c=a;
                     if(b==0)
-                        cout<<a<<"^"<<b<<"= 1"<<endl;
+                        cout<<a<<"^"<<b<<"= 1"<<endl; //caso trivial
                     else if (b>0)
                     {
                         for(int i=1;i<b;i++)
-                            a*=c;
+                            a*=c;                     //lo que se hizo fue igual ina variable c=a.
                         cout<<c<<"^"<<b<<"= "<<a<<endl;
                     }
-                    else
+                    else  //caso de b negativo.
                     {
                         for(int i=1;i<(-b);i++)
                             a*=c;
@@ -105,21 +105,16 @@ int main()
                     int suma=0;
                     cout<<"ingrese un numero "<<endl; cin>>n;
                     if (n<0) cout<<"numero no valido"<<endl;
-                    else if (n%2 != 0)
+                    else {
                         for(int i=0;i<=n;i++)
-                            suma+=i;
-                    else
-                       cout<<"el numero no es impar"<<endl;
-
+                            suma+=i;}
                     cout<<"la sumatoria desde 0 hasta "<<n<<" es: "<<suma<<endl;
-
-
                 }
                 break;
                 case 8:
                 {
                     cout<<"Escriba un programa que pida un numero N e imprima en pantalla su factorial"<<endl;
-                    long double /*n=0,*/ factorial=1;
+                    long double /*n=0,*/ factorial=1; //puede tomar valores grandes.
                     cout<<"ingrese un numero"<<endl; cin>>n;
                     if(n>=0){
                         for(int i=1;i<=n;i++)
@@ -138,7 +133,7 @@ int main()
                 case 9:
                 {
                     cout<<"Escriba un programa que pida un número N e imprima el perímetro y área de uncírculo con radio N."<<endl;
-                    //unsigned int r=0;                       //REVISAR INGRESO DE NEGATIVOS
+                    //unsigned int r=0;
                     float pi=3.1416;
                     cout<<"ingrese un numero"<<endl; cin>>n;
                     if(n>0)
@@ -146,8 +141,11 @@ int main()
                         cout<<"Perimetro: "<<2*pi*n<<endl;
                         cout<<"Area: "<<pi*(n*=n)<<endl;
                     }
-                    else
-                        cout<<"Ingrese otro numero"<<endl;
+                    else if(n<0)
+                    {
+                        cout<<"Perimetro: "<<2*pi*(-n)<<endl;
+                        cout<<"Area: "<<pi*(-(n*=n))<<endl;
+                    }
 
                 }
                 break;
@@ -822,9 +820,9 @@ int main()
                         while(a<n) //para que no haga la susesión n veces, sino hasta a<n y poder sumar solamente los a pares menores que n
                         {
                             a+=b;
-                            //cout<<a<<" ";
-                            b=a-b;
-                            if(a%2==0)
+                            cout<<"a: "<<a<<endl;;
+                            b=a-b; cout<<"b: "<<b<<endl; //será el numero anterio con el que luego a será sumado.
+                            if(a%2==0) //a es el numero en la serie y se evalua si es par y si lo es se suma ese numero
                             {
                                 suma+=a;
                             }
@@ -922,7 +920,7 @@ int main()
                 case 11:
                 {
                 cout<<"Escriba un programa que reciba un número y calcule el mínimo común múltiplo de todos los números enteros entre 1 y el número ingresado"<<endl;
-                cout<<"ingrese un numero "<<endl; cin>>n; //PENDIENTE
+                cout<<"ingrese un numero "<<endl; cin>>n;
                 }
                 break;
             case 12:{
@@ -1003,61 +1001,28 @@ int main()
                 break;
                 case 15:
                 {
-                    int suma=0;
                     cout<<"ingrese un numero impar"<<endl; cin>>n;
                     if(n%2!=0){
                         cout<<"el numero es impar"<<endl;
                         for(unsigned short f=0,ts=0,ti=0; f<n;f++){
                             for(unsigned short c=0;c<n;c++){
                                 if(f<=c && f<=n-1-c){
-                                    //cout<<(n-2*f)*(n-2*f)-(n-2*f-1)+ts<<"\t";
+                                    cout<<(n-2*f)*(n-2*f)-(n-2*f-1)+ts<<"\t";
                                     ts++;
-                                    if(f==c){
-                                        cout<<f<<c<<endl;
-                                        suma+=(n-2*f)*(n-2*f)-(n-2*f-1)+ts;
-                                    }
-                                    else if(f+c == n-1){
-                                        cout<<f<<c<<endl;
-                                        suma+=(n-2*f)*(n-2*f)-(n-2*f-1)+ts;
-                                    }
                                 }
                                 else if (f>c && f>n-1-c){
                                    b=n-1-f;
                                    ts++;
-                                   //cout<<(n-2*b)*(n-2*b)-2*(n-2*b-1)-ts<<'\t';
-                                   /*if(f==c){
-                                       cout<<f<<c<<endl;
-                                       suma+=(n-2*b)*(n-2*b)-2*(n-2*b-1)-ts;
-                                   }*/
-                                   if(f+c == n-1){
-                                       cout<<f<<c<<endl;
-                                       suma+=(n-2*b)*(n-2*b)-2*(n-2*b-1)-ts;
-                                   }
+                                   cout<<(n-2*b)*(n-2*b)-2*(n-2*b-1)-ts<<'\t';
                                 }
                                 else if(f>c && f<=n-1-c){
-                                    //cout<<(n-2*c)*(n-2*c)-(n-2*c-1)-ti+c<<'\t';
-                                    /*if(f==c){
-                                        cout<<f<<c<<endl;
-                                        suma+=(n-2*c)*(n-2*c)-(n-2*c-1)-ti+c;
-                                    }*/
-                                    if(f+c == n-1){
-                                        cout<<f<<c<<endl;
-                                        suma+=(n-2*c)*(n-2*c)-(n-2*c-1)-ti+c;
-                                    }
+                                    cout<<(n-2*c)*(n-2*c)-(n-2*c-1)-ti+c<<'\t';
                                 }
 
                                 else{
                                     b=n-c;
 
-                                    //cout<<(n-2*b)*(n-2*b)+ti-(b-1)<<'\t';
-                                    if(f==c){
-                                        cout<<f<<c<<endl;
-                                        suma+=(n-2*b)*(n-2*b)+ti-(b-1);
-                                    }
-                                    else if(f+c == n-1){
-                                        cout<<f<<c<<endl;
-                                        suma+=(n-2*b)*(n-2*b)+ti-(b-1);
-                                    }
+                                    cout<<(n-2*b)*(n-2*b)+ti-(b-1)<<'\t';
                                 }
 
                             }
@@ -1065,10 +1030,41 @@ int main()
                             ti++;
                             cout<<endl<<endl<<endl;
                         }
-                        cout<<"la suma de las diagonales es: "<<suma<<endl;
                     }
                     else
                         cout<<"el numero no es impar"<<endl;
+                            int sumM=0,pos1=0,pos2=0;
+                            int *Matriz=new int[n*n];
+
+                            for(int i=0;i<n*n;i++){//inicializo arreglo
+                                *(Matriz+i)=i+1;
+                            }
+
+                            for(int i=0;;i+=2){//diagonal 1
+                                pos1+=i;
+                                if(pos1<n*n){
+                                   sumM+=*(Matriz+pos1);
+
+                                }
+                                else{break;}
+
+                            }
+
+                            for(int i=4;;i+=4){//diagonal 2
+
+                                if(pos2<n*n-1){
+                                    sumM+=*(Matriz+i+pos2);
+                                    pos2+=i;
+                                    sumM+=*(Matriz+i+pos2);
+
+                                }
+                                else{break;}
+                                pos2+=i;
+                            }
+
+
+                            delete [] Matriz;
+                            cout<<"\nLa suma de la diagonal es: "<<sumM<<endl;
                 }
                 break;
             case 16:{
@@ -1099,6 +1095,31 @@ int main()
                 b=0;
             }
                break;
+             case 17:
+            {
+                cout<<"Escriba un programa que reciba un número k y calcule cual es el primer número triangular que tiene más de k divisores"<<endl;
+                cout<<"Ingrese un numero: "<<endl; cin>>n;
+                int cont=0, aux=0, a=1; //como no sé hasta que numero voy a tener que iterar uso uun while y para ir sacando los numero triangulares uso como var --> a
+                while(cont < n)
+                {
+                    cont=0;
+                    aux=(a*(a+1))/2; cout<<"numero aux "<<aux<<endl;
+                    for(int i=1; i<=aux; i++)
+                    {
+                        if(aux%i==0)
+                        {
+                            cont++;
+                            cout<<"divisor: "<<i<<endl;
+                            cout<<"cont: "<<cont<<endl;
+                        }
+                    }
+                    a++;
+
+                }
+                cout<<"el numero es: "<<aux<<" que tiene "<<cont<<" divisores"<<endl;
+
+            }
+            break;
                 default:
                 //se usa para que si el usuario ingresa un numero que no corresponde a ningún caso o es diferente de 0, le haga saber al usuario que es aopción no es valida.
                 cout<<"opcion no valida."<<endl;
